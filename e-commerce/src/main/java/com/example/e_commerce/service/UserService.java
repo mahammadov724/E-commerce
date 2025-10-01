@@ -45,7 +45,11 @@ public class UserService {
 		if (!user.isPresent() || !passwordEncoder.matches(d.getPassword(), user.get().getPassword())) {
 			throw new OurRuntimeException(null, "username or password incorrect");
 		}
-		return jwtUtil.generateToken(user.get().getUsername());
+		return jwtUtil.generateToken(
+				user.get().getUsername(),
+				user.get().getName(),
+				user.get().getSurname(),
+				user.get().getEmail());
 	}
 
 }

@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+.top-banner {
+    background: linear-gradient(90deg, #a020f0, #6a0dad);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+.top-banner a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+.top-banner a:hover {
+    color: #dda0ff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #111;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #b266ff;
+    text-shadow: 0 0 8px rgba(178, 102, 255, 0.6);
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover {
+    color: #b266ff;
+}
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #b266ff;
+    border-radius: 2px;
+}
+.shop-btn {
+    background: linear-gradient(135deg, #6a0dad, #b266ff);
+    padding: 7px 16px;
+    color: #fff !important;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.shop-btn:hover {
+    background: linear-gradient(135deg, #b266ff, #6a0dad);
+    box-shadow: 0 0 12px rgba(178, 102, 255, 0.6);
+}
+
+.search-cart-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    outline: none;
+    background: #222;
+    color: #fff;
+    transition: border 0.3s ease;
+}
+.search-input:focus {
+    border-color: #b266ff;
+}
+.search-icon,
+.cart-icon,
+.profile-icon {
+    font-size: 18px;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+.search-icon:hover,
+.cart-icon:hover,
+.profile-icon:hover {
+    color: #b266ff;
+    transform: scale(1.2);
+}
+.username {
+    margin-left: 5px;
+    font-size: 15px;
+    color: #eee;
+}
+.login-btn {
+    background: linear-gradient(135deg, #56575a, #333);
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.login-btn:hover {
+    background: linear-gradient(135deg, #777, #444);
+    transform: translateY(-2px);
+}
+
+.sub-main {
+    width: 85%;
+    margin: auto;
+    margin-top: 45px;
+    padding: 25px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7),
+                inset 0 1px 4px rgba(255, 255, 255, 0.05);
+}
+.sub-main button {
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #6a0dad, #b266ff);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    transition: all 0.3s ease;
+}
+.sub-main button:hover {
+    background: linear-gradient(135deg, #c080ff, #8a2be2);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(178, 102, 255, 0.6);
+}
+
+.user-details {
+    width: 100%;
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 12px;
+    background: #111;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.75),
+                inset 0 1px 4px rgba(255, 255, 255, 0.05);
+    color: #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.user-details:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.85);
+}
+.user-details h3 {
+    line-height: 1.8;
+    font-size: 28px;
+    font-weight: 700;
+    color: #b266ff;
+    margin-bottom: 12px;
+    text-shadow: 0 0 8px rgba(178, 102, 255, 0.5);
+}
+.user-details p {
+    line-height: 1.8;
+    font-size: 18px;
+    word-spacing: 4px;
+    color: #ccc;
+}
+.user-details b {
+    color: #da70d6; 
+}
+
+.footer {
+    background-color: #111;
+    color: white;
+    padding: 70px 50px;
+    margin-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
+}
+.footer-column h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    color: #b266ff;
+}
+.footer-column p,
+.footer-column ul li a {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #ccc;
+}
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+.footer-column ul li a {
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.footer-column ul li a:hover {
+    color: #dda0ff;
+    padding-left: 6px;
+}
+.subscribe-box {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 40px;
+    overflow: hidden;
+    max-width: 420px;
+    background: #1a1a1a;
+    border: 1px solid rgba(178, 102, 255, 0.5);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.7);
+}
+.subscribe-box input {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    background: transparent;
+}
+.subscribe-box input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.subscribe-box button {
+    background: linear-gradient(135deg, #b266ff, #dda0ff);
+    border: none;
+    color: #111;
+    font-size: 22px;
+    padding: 0 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.subscribe-box button:hover {
+    background: linear-gradient(135deg, #c78aff, #b266ff);
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(178, 102, 255, 0.7);
+}
+
+.app-buttons img {
+    width: 150px;
+    margin: 12px 0;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.app-buttons img:hover {
+    transform: scale(1.08);
+    filter: brightness(1.2);
+}
+.social-icons {
+    margin-top: 20px;
+}
+.social-icons a {
+    margin-right: 18px;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icons a:hover {
+    color: #b266ff;
+    transform: scale(1.3) rotate(8deg);
+}
