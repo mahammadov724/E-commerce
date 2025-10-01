@@ -1,4 +1,4 @@
-package com.example.e_commerce.requestDto;
+package com.example.e_commerce.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductRequestDto {
+public class ProductResponseDto {
 	private Integer id;
 	private String brand;
 	private String category;

@@ -120,17 +120,18 @@
     color: #eee;
 }
 .login-btn {
-    background: linear-gradient(135deg, #56575a, #333);
-    color: white;
-    border: none;
-    padding: 7px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 .login-btn:hover {
-    background: linear-gradient(135deg, #777, #444);
-    transform: translateY(-2px);
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(108, 92, 231, 0.4);
 }
 
 .sub-main {

@@ -20,7 +20,7 @@ registerForm.addEventListener('submit', (e) => {
     })
     .then(async response => {
         if (response.ok) {
-            alert('User register successfully');
+            alert('User registered successfully');
 
             document.getElementById('name').value = '';
             document.getElementById('surname').value = '';

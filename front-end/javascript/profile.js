@@ -23,5 +23,5 @@ getUserProfile();
 let productButton = document.querySelector('.sub-main button');
 
 productButton.addEventListener('click', (e) => {
-    window.location.href = 'products.html';
+    window.location.href = 'myProducts.html';
 })
