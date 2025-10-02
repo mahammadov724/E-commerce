@@ -28,4 +28,6 @@ public class Product {
 	
 	@Column(columnDefinition = "TEXT")
 	private String image;
+	
+	private Integer userId;
 }
