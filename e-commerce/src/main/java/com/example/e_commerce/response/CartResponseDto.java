@@ -1,22 +1,22 @@
 package com.example.e_commerce.response;
 
+import com.example.e_commerce.entity.Product;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductResponseDto {
+public class CartResponseDto {
 	private Integer id;
-	private String brand;
-	private String model;
-	private String description;
-	private String category;
-	private Integer rating;
-	private Double price;
-	private String image;
-
+	private Integer price;
+	private Integer quantity;
+	private Double subTotal;
+	private Product product;
+	
+	private Integer userId;
 }

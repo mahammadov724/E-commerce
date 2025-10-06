@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/cart.css">
 </head>
 
 <body style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
@@ -29,22 +29,36 @@
             <a class="fas fa-search search-icon"></a>
             <a class="fas fa-shopping-cart cart-icon"></a>
             <a href="./profile.html" class="fas fa-user profile-icon"></a>
-            <span class="username">username</span>
             <button style="width: 100%;" class="login-btn">log In</button>
         </div>
     </nav>
-    <div style="display: flex;justify-content: center;align-items: center;min-height: 100vh;background: #fff;">
-        <div class="container">
-            <form class="form">
-                <h2>Log In</h2>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+    <div class="container">
+        <div class="cart-table">
+            <h2 style="color: white;">Cart</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cart-body">
+                    <!-- JS ilə doldurulacaq -->
+                </tbody>
+            </table>
+        </div>
 
-                <button type="submit">Log In</button>
-            </form>
+        <div class="cart-summary">
+            <h3>Cart total</h3>
+            <p><span>Subtotal</span> <span id="subtotal">0 AZN</span></p>
+            <p><span>Shipping</span> <span>Free</span></p>
+            <hr>
+            <p><strong>Total</strong> <strong id="total">0 AZN</strong></p>
+            <button class="checkout-btn">Proceed to checkout</button>
         </div>
     </div>
 
@@ -109,7 +123,7 @@
 
         </div>
     </footer>
-<script src="./javascript/login.js"></script>
+    <script src="./javascript/cart.js"></script>
 </body>
 
 </html>

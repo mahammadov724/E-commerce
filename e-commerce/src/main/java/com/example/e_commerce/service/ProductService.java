@@ -2,6 +2,7 @@ package com.example.e_commerce.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,6 +34,9 @@ public class ProductService {
 		Product product = new Product();
 		product.setId(null);
 		product.setBrand(d.getBrand());
+		product.setDescription(d.getDescription());
+		product.setModel(d.getModel());
+		product.setRating(d.getRating());
 		product.setCategory(d.getCategory());
 		product.setPrice(d.getPrice());
 		product.setImage(d.getImage());
@@ -62,6 +66,9 @@ public class ProductService {
 			response.setId(product.getId());
 			response.setBrand(product.getBrand());
 			response.setCategory(product.getCategory());
+			response.setRating(product.getRating());
+			response.setDescription(product.getDescription());
+			response.setModel(product.getModel());
 			response.setPrice(product.getPrice());
 			response.setImage(product.getImage());
 		}else {
@@ -98,6 +105,48 @@ public class ProductService {
 			throw new OurRuntimeException(null, "id tapilmadi");
 		}
 		
+	}
+
+	public ProductListResponse getAllProduct() {
+		ProductListResponse response = new ProductListResponse();
+		List<Product> all = productRepository.findAll();
+		response.setProducts(all);
+		return response;
+	}
+
+	public List<ProductResponseDto> search(String query) {
+		List<Product> products = productRepository.findAll();
+		return products.stream().filter(product -> product.getBrand().toLowerCase().contains(query.toLowerCase()))
+				.map(product -> {
+					ProductResponseDto response = new ProductResponseDto();
+					response.setId(product.getId());
+					response.setBrand(product.getBrand());
+					response.setPrice(product.getPrice());
+					response.setImage(product.getImage());
+					return response;
+				})
+				.collect(Collectors.toList());
+	}
+
+	public List<ProductResponseDto> sortedProduct(String sort) {
+		List<Product> products;
+		
+		if ("priceAsc".equalsIgnoreCase(sort)) {
+			products = productRepository.findAllByOrderByPriceAsc();
+		}else if("priceDesc".equalsIgnoreCase(sort)) {
+			products = productRepository.findAllByOrderByPriceDesc();
+		}else {
+			products = productRepository.findAll();
+		}
+		return products.stream().map(product -> {
+			ProductResponseDto response = new ProductResponseDto();
+			response.setId(product.getId());
+			response.setBrand(product.getBrand());
+			response.setPrice(product.getPrice());
+			response.setImage(product.getImage());
+			return response;
+		})
+				.collect(Collectors.toList());
 	}
 
 }

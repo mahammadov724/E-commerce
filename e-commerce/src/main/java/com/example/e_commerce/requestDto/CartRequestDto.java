@@ -9,14 +9,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductRequestDto {
+public class CartRequestDto {
+	
 	private Integer id;
-	private String brand;
-	private String model;
-	private String description;
-	private Integer rating;
-	private String category;
-	private Double price;
-	private String image;
-
+	private Integer productId;
+	private Integer price;
+	private Integer quantity;
+	private Double subTotal;
+	
 }

@@ -4,49 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="./css/productDetail.css">
+    <script src="https://kit.fontawesome.com/a2e0f1f6d3.js" crossorigin="anonymous"></script>
 </head>
 
-<body style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
+<body>
     <div class="top-banner">
         <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="#">ShopNow</a></p>
     </div>
 
     <nav class="navbar custom-navbar px-4 py-3">
         <div class="logo"><strong>E-commerce</strong></div>
-
-        <ul class="nav-links list-unstyled d-flex gap-4 mb-0">
-            <li><a href="./index.html" class="active">Home</a></li>
+        <ul class="nav-links">
+            <li><a href="./index.html">Home</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="./register.html">Sign Up</a></li>
+            <li><a href="./login.html">Log In</a></li>
             <li><a href="./shop.html" class="shop-btn">Shop</a></li>
         </ul>
-
-        <div class="search-cart-profile d-flex align-items-center gap-2">
+        <div class="search-cart-profile">
             <input type="text" placeholder="What are you looking for?" class="search-input" />
-            <a class="fas fa-search search-icon"></a>
-            <a class="fas fa-shopping-cart cart-icon"></a>
-            <a href="./profile.html" class="fas fa-user profile-icon"></a>
-            <span class="username">username</span>
-            <button style="width: 100%;" class="login-btn">log In</button>
+            <i class="fas fa-search search-icon"></i>
+            <i class="fas fa-shopping-cart cart-icon"></i>
+            <i class="fas fa-user profile-icon"></i>
+            <button class="login-btn">Log In</button>
         </div>
     </nav>
-    <div style="display: flex;justify-content: center;align-items: center;min-height: 100vh;background: #fff;">
-        <div class="container">
-            <form class="form">
-                <h2>Log In</h2>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Log In</button>
-            </form>
+    <main>
+        <div class="sub-main">
+            <div class="left-side">
+                <img src="" alt="">
+            </div>
+            <div class="right-side">
+                <a href="#"></a>
+                <h3 style="color: white;"></h3>
+                <p style="color: white;"></p>
+                <h4 style="color: white;"></h4>
+                <br>
+                <button>Add To Cart</button>
+            </div>
         </div>
-    </div>
+    </main>
 
     <footer class="footer"
         style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
@@ -109,7 +109,8 @@
 
         </div>
     </footer>
-<script src="./javascript/login.js"></script>
+
+    <script src="./javascript/productDetail.js"></script>
 </body>
 
 </html>

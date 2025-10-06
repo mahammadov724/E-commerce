@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/shop.css">
 </head>
 
 <body style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
@@ -20,33 +20,60 @@
             <li><a href="./index.html" class="active">Home</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="./register.html">Sign Up</a></li>
+            <li><a href="./login.html">Log In</a></li>
             <li><a href="./shop.html" class="shop-btn">Shop</a></li>
         </ul>
 
         <div class="search-cart-profile d-flex align-items-center gap-2">
             <input type="text" placeholder="What are you looking for?" class="search-input" />
-            <a class="fas fa-search search-icon"></a>
-            <a class="fas fa-shopping-cart cart-icon"></a>
-            <a href="./profile.html" class="fas fa-user profile-icon"></a>
-            <span class="username">username</span>
+            <i class="fas fa-search search-icon"></i>
+            <i class="fas fa-shopping-cart cart-icon"></i>
+            <i class="fas fa-user profile-icon"></i>
             <button style="width: 100%;" class="login-btn">log In</button>
         </div>
     </nav>
-    <div style="display: flex;justify-content: center;align-items: center;min-height: 100vh;background: #fff;">
+
+    <div class="bodyy">
         <div class="container">
-            <form class="form">
-                <h2>Log In</h2>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+            <aside class="sidebar">
+                <input type="text" id="search" placeholder="search">
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <h3>Category</h3>
+                <ul>
+                    <li><a href="#">Laptop</a></li>
+                    <li><a href="#">Phone</a></li>
+                    <li><a href="#">Ipad</a></li>
+                    <li><a href="#">Headphone</a></li>
+                </ul>
 
-                <button type="submit">Log In</button>
-            </form>
+                <h3>Rate</h3>
+                <div class="stars-filter">
+                    <p>⭐⭐⭐⭐⭐</p>
+                    <p>⭐⭐⭐⭐</p>
+                    <p>⭐⭐⭐</p>
+                    <p>⭐⭐</p>
+                    <p>⭐</p>
+                </div>
+            </aside>
+
+            <main class="shop">
+                <div class="shop-header">
+                    <h2>Shop</h2>
+                    <div class="filters">
+                        <button class="btn">All products</button>
+                        <select id="sort">
+                            <option value="">Sort by</option>
+                            <option value="low">Price: Low to High</option>
+                            <option value="high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="cards"></div>
+            </main>
         </div>
     </div>
+
 
     <footer class="footer"
         style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
@@ -109,7 +136,7 @@
 
         </div>
     </footer>
-<script src="./javascript/login.js"></script>
+    <script src="./javascript/shop.js"></script>
 </body>
 
 </html>
