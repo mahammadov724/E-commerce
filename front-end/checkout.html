@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css//checkout.css">
+</head>
+
+<body style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
+    <div class="top-banner">
+        <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="#">ShopNow</a></p>
+    </div>
+
+    <nav class="navbar custom-navbar px-4 py-3">
+        <div class="logo"><strong>E-commerce</strong></div>
+
+        <ul class="nav-links list-unstyled d-flex gap-4 mb-0">
+            <li><a href="./index.html" class="active">Home</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./register.html">Sign Up</a></li>
+            <li><a href="./shop.html" class="shop-btn">Shop</a></li>
+        </ul>
+
+        <div class="search-cart-profile d-flex align-items-center gap-2">
+            <input type="text" placeholder="What are you looking for?" class="search-input" />
+            <a class="fas fa-search search-icon"></a>
+            <a href="./cart.html" class="fas fa-shopping-cart cart-icon"></a>
+            <a href="./profile.html" class="fas fa-user profile-icon"></a>
+            <button style="width: 100%;" class="login-btn">log In</button>
+        </div>
+    </nav>
+
+    <main class="checkout-container">
+        <div class="checkout-left">
+            <h2>Billing Details</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label>First name</label>
+                    <input type="text" id="firstName" autocomplete="off" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Last name</label>
+                    <input type="text" id="lastName" autocomplete="off" name="lastName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>State</label>
+                    <select name="state" required>
+                        <option value="">Choose...</option>
+                        <option value="Azerbaijan">Azerbaijan</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="UK">UK</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Russia">Russia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="city" autocomplete="off" name="city" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" id="address" autocomplete="off" name="address" required>
+                </div>
+
+                <div class="form-group half">
+                    <label>Zip</label>
+                    <input type="text" id="zip" autocomplete="off" name="zip" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="tel" autocomplete="off" name="tel" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" autocomplete="off" name="email" required>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Agree to terms and conditions</label>
+                </div>
+            </form>
+        </div>
+
+        <div class="checkout-right">
+            <h2>Payment</h2>
+            <div class="card-logos">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+                <img src="./photos/mastercard.png" alt="MasterCard">
+                <img src="./photos/amex.jpg" alt="Amex">
+                <img src="./photos/discover.png" alt="Discover">
+            </div>
+
+            <div class="form-group">
+                <label>Card number</label>
+                <input type="text" name="cardNum" placeholder="xxxx xxxx xxxx xxxx" required>
+            </div>
+
+            <div class="card-details">
+                <div>
+                    <label>Expiration (MM)</label>
+                    <input type="text" id="expiryMonth" autocomplete="off" maxlength="2" placeholder="MM" required>
+                </div>
+                <div>
+                    <label>Expiration (YY)</label>
+                    <input type="text" id="expiryYear" autocomplete="off" maxlength="4" placeholder="YYYY" required>
+                </div>
+                <div>
+                    <label>Card security code</label>
+                    <input type="text" id="securitycode" autocomplete="off" maxlength="4" placeholder="CVV" required>
+                </div>
+            </div>
+
+            <div class="summary">
+                <div class="summary-item">
+                    <span>Subtotal</span>
+                    <span id="subtotal">0$</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping</span>
+                    <span class="free">FREE</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total</span>
+                    <span id="total">0$</span>
+                </div>
+            </div>
+
+            <button type="submit" id="orderBtn" class="place-order">Place order</button>
+        </div>
+    </main>
+
+
+    <footer class="footer"
+        style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
+        <div class="footer-container">
+
+            <div class="footer-column">
+                <h3>Exclusive</h3>
+                <p class="subscribe">Subscribe</p>
+                <p>Get 10% off your first order</p>
+                <div class="subscribe-box">
+                    <input type="email" placeholder="Enter your email">
+                    <button>➤</button>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+                <p>exclusive@gmail.com</p>
+                <p>+88015-88888-9999</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Account</h3>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Login / Register</a></li>
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Link</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Download App</h3>
+                <p>Save $3 with App New User Only</p>
+                <div class="app-buttons">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                        alt="Google Play">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                        alt="App Store">
+                </div>
+                <div class="social-icons">
+                    <a href="#">🌐</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📸</a>
+                    <a href="#">💼</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <script src="./javascript/checkout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
