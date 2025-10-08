@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/orders.css">
 </head>
 
 <body style="background: url(./photos/0hAN8p.jpg)no-repeat center center fixed;background-size: cover;">
@@ -17,34 +17,46 @@
         <div class="logo"><strong>E-commerce</strong></div>
 
         <ul class="nav-links list-unstyled d-flex gap-4 mb-0">
-           <li><a href="./index.html" class="active">Home</a></li>
+            <li><a href="./index.html" class="active">Home</a></li>
             <li><a href="./contact.html">Contact</a></li>
             <li><a href="./about.html">About</a></li>
             <li><a href="./register.html">Sign Up</a></li>
             <li><a href="./shop.html" class="shop-btn">Shop</a></li>
         </ul>
 
-        <div class="search-cart-profile d-flex align-items-center gap-2">
+        <div class="search-order-profile d-flex align-items-center gap-2">
             <input type="text" placeholder="What are you looking for?" class="search-input" />
             <a class="fas fa-search search-icon"></a>
             <a href="./cart.html" class="fas fa-shopping-cart cart-icon"></a>
             <a href="./profile.html" class="fas fa-user profile-icon"></a>
-            <span class="username">username</span>
             <button style="width: 100%;margin-top: 0px;" class="login-btn">log In</button>
         </div>
     </nav>
-    <div style="display: flex;justify-content: center;align-items: center;min-height: 100vh;background: #fff;">
-        <div class="container">
-            <form class="form">
-                <h2>Log In</h2>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+    <div class="container">
+        <div class="order-table">
+            <h2 style="color: white;">Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="orderItemsTableBody"></tbody>
+                </tbody>
+            </table>
+        </div>
 
-                <button type="submit">Log In</button>
-            </form>
+        <div class="order-summary">
+            <h3>Order total</h3>
+            <p><span>Subtotal</span> <span id="subtotal">0 AZN</span></p>
+            <p><span>Shipping</span> <span>Free</span></p>
+            <hr>
+            <p><strong>Total</strong> <strong id="total">0 AZN</strong></p>
         </div>
     </div>
 
@@ -109,7 +121,7 @@
 
         </div>
     </footer>
-<script src="./javascript/login.js"></script>
+    <script src="./javascript/orders.js"></script>
 </body>
 
 </html>

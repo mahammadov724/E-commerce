@@ -24,11 +24,6 @@ import com.example.e_commerce.service.ProductService;
 @CrossOrigin(origins = "*")
 public class ProductController {
 
-//	@GetMapping(path = "/getAll")
-//	public String get() {
-//		return "get all products";
-//	}
-	
 	@Autowired
 	private ProductService productService;
 	

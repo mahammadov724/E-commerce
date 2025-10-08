@@ -28,7 +28,6 @@ function showProducts(products = allProducts) {
         button.classList.add('add-to-cart');
         button.textContent = "Add to Cart";
 
-        // 🔹 Add to Cart click
         button.addEventListener('click', (e) => {
             e.stopPropagation();
             addToCart(product.id);
