@@ -21,8 +21,11 @@ function showProducts(products = allProducts) {
 
         let rating = document.createElement('div');
         rating.classList.add('rating');
-        let stars = "⭐".repeat(product.rate || 4);
-        rating.textContent = stars + " (" + (product.reviewCount || 0) + ")";
+
+        let ratingValue = Math.round(product.rating || 0);
+        let stars = '⭐'.repeat(ratingValue);
+        rating.textContent = `${stars} (${product.rating?.toFixed(1) || "0.0"})`;
+
 
         let button = document.createElement('button');
         button.classList.add('add-to-cart');
@@ -66,8 +69,6 @@ function fetchProducts() {
         .catch(err => console.error("Xəta:", err));
 }
 
-fetchProducts();
-
 function addToCart(productId) {
     const token = localStorage.getItem('token');
 
@@ -81,16 +82,73 @@ function addToCart(productId) {
         },
         body: JSON.stringify(cartData)
     })
-    .then(async response => {
-        const result = await response.text();
+        .then(async response => {
+            const result = await response.text();
 
-        if (response.ok) {
-            alert("Məhsul səbətə əlavə olundu!");
-            // 🔹 Məhsul əlavə olunduqdan sonra cart səhifəsinə keç
-            window.location.href = 'cart.html';
-        } else {
-            alert("Xəta: " + result);
+            if (response.ok) {
+                alert("Məhsul səbətə əlavə olundu!");
+                window.location.href = 'cart.html';
+            } else {
+                alert("Xəta: " + result);
+            }
+        })
+        .catch(err => console.error("Cart-a əlavə olunarkən xəta:", err));
+}
+
+document.querySelectorAll('.stars-filter button').forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedStars = parseInt(button.getAttribute('data-stars'));
+
+        const filtered = allProducts.filter(p =>
+            Math.floor(p.rating || 0) >= selectedStars
+        );
+
+        showProducts(filtered);
+    });
+});
+
+
+
+document.querySelectorAll('.sidebar ul li a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = link.textContent.trim().toLowerCase();
+        const filtered = allProducts.filter(p => p.category?.toLowerCase() === category);
+        showProducts(filtered);
+    });
+});
+
+document.querySelector('.filters .btn').addEventListener('click', () => {
+    showProducts(allProducts);
+});
+
+document.getElementById('search').addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+
+    const filtered = allProducts.filter(p =>
+        p.brand?.toLowerCase().includes(query) ||
+        p.model?.toLowerCase().includes(query) ||
+        p.category?.toLowerCase().includes(query)
+    );
+
+    showProducts(filtered);
+});
+
+fetchProducts();
+
+const sortSelect = document.getElementById('sort');
+if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
+        const value = sortSelect.value;
+
+        let sorted = [...allProducts];
+
+        if (value === 'low') {
+            sorted.sort((a, b) => a.price - b.price);
+        } else if (value === 'high') {
+            sorted.sort((a, b) => b.price - a.price);
         }
-    })
-    .catch(err => console.error("Cart-a əlavə olunarkən xəta:", err));
+
+        showProducts(sorted);
+    });
 }

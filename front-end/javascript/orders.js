@@ -1,60 +1,42 @@
-const token = localStorage.getItem('token');
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token');
+    const userEmail = localStorage.getItem('userEmail');
 
-const orderId = localStorage.getItem('selectedOrderId'); 
-
-function loadOrderItems() {
-    if (!orderId) {
-        console.error("❌ Order ID tapılmadı. localStorage və ya URL-də yoxdur.");
-        alert("Order ID tapılmadı. Zəhmət olmasa sifariş seçin.");
-        return;
-    }
-
-    console.log("🟢 Backend-ə göndərilən Order ID:", orderId);
-
-    fetch(`http://localhost:8086/orderItem/getByOrder/${orderId}`, {
-        method: "GET",
+    fetch(`http://localhost:8086/orders/my-orders?email=${userEmail}`, {
+        method: 'GET',
         headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json"
+            'Authorization': `Bearer ${token}`
         }
     })
-    .then(async response => {
-        if (!response.ok) {
-            const errText = await response.text();
-            throw new Error(`Server xətası: ${errText}`);
-        }
-        return response.json();
-    })
+    .then(res => res.json())
     .then(data => {
-        console.log("✅ OrderItem-lər:", data);
-        renderOrderItems(data);
+        const tbody = document.getElementById('orderItemsTableBody');
+        let html = '';
+        let total = 0;
+
+        data.forEach(order => {
+            order.items.forEach(item => {
+                total += item.subTotal;
+                html += `
+                    <tr>
+                        <td>
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <img src="${item.product.image}" style="width:80px; height:70px; object-fit:cover; border-radius:8px;"/>
+                                ${item.product.brand}
+                            </div>
+                        </td>
+                        <td style="text-align:center;">${item.product.price} AZN</td>
+                        <td style="text-align:center;">${item.quantity}</td>
+                        <td style="text-align:center;">${item.subTotal} AZN</td>
+                        <td></td>
+                    </tr>
+                `;
+            });
+        });
+
+        tbody.innerHTML = html;
+        document.getElementById('subtotal').textContent = `${total} AZN`;
+        document.getElementById('total').textContent = `${total} AZN`;
     })
-    .catch(error => {
-        console.error("❌ Xəta baş verdi:", error);
-        alert("Order item-ləri yüklənərkən xəta baş verdi!");
-    });
-}
-
-function renderOrderItems(items) {
-    const tableBody = document.getElementById('orderItemsTableBody');
-    tableBody.innerHTML = ''; 
-
-    if (!items || items.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="5">Bu sifariş üçün məhsul tapılmadı</td></tr>';
-        return;
-    }
-
-    items.forEach((item, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${item.productName || '—'}</td>
-            <td>${item.quantity || 0}</td>
-            <td>${item.price ? item.price.toFixed(2) + " ₼" : "—"}</td>
-            <td>${(item.price * item.quantity).toFixed(2)} ₼</td>
-        `;
-        tableBody.appendChild(row);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', loadOrderItems);
+    .catch(err => console.error("Sifarişlər yüklənərkən xəta:", err));
+});

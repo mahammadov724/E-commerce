@@ -20,7 +20,7 @@ public class OrderItemService {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
 
-    public List<OrderItem> getAllByOrderId(Long orderId) {
+    public List<OrderItem> getAllByOrderId(Integer orderId) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order tapılmadı"));
         return orderItemRepository.findByOrder(order);
@@ -52,10 +52,12 @@ public class OrderItemService {
         return orderItemRepository.save(item);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         if (!orderItemRepository.existsById(id)) {
             throw new RuntimeException("OrderItem tapılmadı");
         }
         orderItemRepository.deleteById(id);
     }
+
+	
 }

@@ -43,9 +43,10 @@ public class ProductController {
 	}
 	
 	@PutMapping(path = "/update")
-	public void updateProduct(@RequestBody ProductRequestDto dto) {
-		productService.update(dto);
+	public void updateProduct( @RequestBody ProductRequestDto dto) {
+	    productService.update(dto);
 	}
+
 	
 	@DeleteMapping(path = "/delete/{id}")
 	public void deleteProduct(@PathVariable Integer id) {
@@ -66,5 +67,6 @@ public class ProductController {
 	public List<ProductResponseDto> sortedProduct(@RequestParam(name = "sort",required = false) String sort){
 		return productService.sortedProduct(sort);
 	}
+	
 	
 }

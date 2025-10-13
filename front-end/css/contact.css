@@ -221,7 +221,27 @@ textarea {
     resize: vertical;
 }
 
-/* Button */
+.search-cart-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.search-icon,
+.cart-icon,
+.profile-icon {
+  font-size: 18px;
+  color: black;
+  cursor: pointer;
+}
+
 .send-btn {
     align-self: flex-end;
     background: #e63946;
