@@ -1,5 +1,7 @@
 package com.example.e_commerce.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import com.example.e_commerce.exception.OurRuntimeException;
 import com.example.e_commerce.repository.CartRepository;
 import com.example.e_commerce.repository.OrderRepository;
 import com.example.e_commerce.requestDto.OrderRequestDto;
+import com.example.e_commerce.response.UserOrderDto;
 
 @Service
 public class OrderService {
@@ -38,6 +41,11 @@ public class OrderService {
 		order.setCardSecurityCode(dto.getCardSecurityCode());
 		order.setCart(cart);
 		orderRepository.save(order);
+	}
+
+	public List<UserOrderDto> getUserOrders(Integer userId) {
+		
+		return orderRepository.findOrdersByUserId(userId);
 	}
 
 	

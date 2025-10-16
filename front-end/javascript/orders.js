@@ -1,42 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
-    const userEmail = localStorage.getItem('userEmail');
 
-    fetch(`http://localhost:8086/orders/my-orders?email=${userEmail}`, {
+    if (!token) {
+        window.location.href = './login.html';
+        return;
+    }
+
+    fetch('http://localhost:8086/users/profile', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
         }
     })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Profil məlumatı alınmadı");
+        }
+        return res.json();
+    })
+    .then(userData => {
+        const userId = userData.id;
+        return fetch(`http://localhost:8086/orders/${userId}`);
+    })
     .then(res => res.json())
-    .then(data => {
+    .then(orders => {
         const tbody = document.getElementById('orderItemsTableBody');
-        let html = '';
+        tbody.innerHTML = '';
+
         let total = 0;
 
-        data.forEach(order => {
-            order.items.forEach(item => {
-                total += item.subTotal;
-                html += `
-                    <tr>
-                        <td>
-                            <div style="display:flex; align-items:center; gap:10px;">
-                                <img src="${item.product.image}" style="width:80px; height:70px; object-fit:cover; border-radius:8px;"/>
-                                ${item.product.brand}
-                            </div>
-                        </td>
-                        <td style="text-align:center;">${item.product.price} AZN</td>
-                        <td style="text-align:center;">${item.quantity}</td>
-                        <td style="text-align:center;">${item.subTotal} AZN</td>
-                        <td></td>
-                    </tr>
-                `;
-            });
+        orders.forEach(order => {
+            const row = document.createElement('tr');
+
+            const productCell = document.createElement('td');
+            productCell.innerHTML = `
+                <img src="${order.image}" alt="${order.model}" style="width: 50px; height: 50px; object-fit: cover;">
+                <div>${order.brand} ${order.model}</div>
+            `;
+
+            const priceCell = document.createElement('td');
+            priceCell.textContent = `${(order.subTotal / order.quantity).toFixed(2)}$`;
+
+            const quantityCell = document.createElement('td');
+            quantityCell.textContent = order.quantity;
+
+            const subTotalCell = document.createElement('td');
+            subTotalCell.textContent = `${order.subTotal.toFixed(2)}$`;
+
+            const addressCell = document.createElement('td');
+            addressCell.innerHTML = `
+                ${order.firstName} ${order.lastName} <br>
+                ${order.address}, ${order.city}, ${order.state} <br>
+                ${order.email} | ${order.tel}
+            `;
+
+            total += order.subTotal;
+
+            row.appendChild(productCell);
+            row.appendChild(priceCell);
+            row.appendChild(quantityCell);
+            row.appendChild(subTotalCell);
+            row.appendChild(addressCell);
+
+            tbody.appendChild(row);
         });
 
-        tbody.innerHTML = html;
-        document.getElementById('subtotal').textContent = `${total} AZN`;
-        document.getElementById('total').textContent = `${total} AZN`;
+        document.getElementById('subtotal').textContent = `${total.toFixed(2)}$`;
+        document.getElementById('total').textContent = `${total.toFixed(2)}$`;
+
     })
-    .catch(err => console.error("Sifarişlər yüklənərkən xəta:", err));
+    .catch(error => {
+        console.error('Sifarişlər yüklənərkən xəta baş verdi:', error);
+        document.getElementById('orderItemsTableBody').innerHTML = `<tr><td colspan="5">Sifarişlər tapılmadı.</td></tr>`;
+    });
 });

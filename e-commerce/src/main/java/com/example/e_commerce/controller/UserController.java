@@ -45,12 +45,12 @@ public class UserController {
 	}
 	
 	@GetMapping(path = "/profile")
-	public ResponseEntity<Map<String, String>> getUserProfile(@RequestHeader("Authorization") String token){
+	public ResponseEntity<Map<String, Object>> getUserProfile(@RequestHeader("Authorization") String token){
 		if (token.startsWith("Bearer")) {
 			token = token.substring(7);
 		}
 		
-		Map<String, String> claims = jwtUtil.extractClaims(token);
+		Map<String, Object> claims = jwtUtil.extractClaims(token);
 		return ResponseEntity.ok(claims);
 	}
 }

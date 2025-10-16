@@ -84,6 +84,10 @@ document.getElementById('orderBtn').addEventListener('click', () => {
 
                 document.querySelectorAll('.error-message').forEach(e => e.remove());
                 document.querySelectorAll('input, select').forEach(i => i.style.borderColor = "");
+
+                setTimeout(() => {
+                    window.location.href = "./orders.html";
+                }, 1500);
             } else {
                 for (let res of responses) {
                     let data;
@@ -159,19 +163,21 @@ function loadCheckoutSummary() {
             'Authorization': `Bearer ${token}`
         }
     })
-    .then(async response => {
-        if (!response.ok) throw new Error("Səbət məlumatı alına bilmədi");
-        const data = await response.json();
+        .then(async response => {
+            if (!response.ok) throw new Error("Səbət məlumatı alına bilmədi");
+            const data = await response.json();
 
-        let subtotal = 0;
-        data.forEach(item => {
-            subtotal += item.product.price * item.quantity;
-        });
 
-        document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)}$`;
-        document.getElementById('total').textContent = `${subtotal.toFixed(2)}$`;
-    })
-    .catch(err => console.error(err));
+            let subtotal = 0;
+            data.forEach(item => {
+                subtotal += item.product.price * item.quantity;
+            });
+
+            document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)}$`;
+            document.getElementById('total').textContent = `${subtotal.toFixed(2)}$`;
+        })
+        .catch(err => console.error(err));
 }
 
 document.addEventListener('DOMContentLoaded', loadCheckoutSummary);
+

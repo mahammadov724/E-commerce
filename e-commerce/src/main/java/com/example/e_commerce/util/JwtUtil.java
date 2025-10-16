@@ -23,8 +23,9 @@ public class JwtUtil {
 	 this.signinKey = Keys.hmacShaKeyFor(decode);
 	}
 	
-	public String generateToken(String username,String name,String surname,String email) {
-		Map<String, String> claims = new HashMap<String, String>();
+	public String generateToken(Integer id,String username,String name,String surname,String email) {
+		Map<String, Object> claims = new HashMap<String, Object>();
+		claims.put("id", id);
 		claims.put("name", name);
 		claims.put("surname", surname);
 		claims.put("email", email);
@@ -48,14 +49,15 @@ public class JwtUtil {
 		return claims.getSubject();
 	}
 	
-	public Map<String, String> extractClaims(String token){
+	public Map<String, Object> extractClaims(String token){
 		Claims claims = Jwts.parserBuilder()
 				.setSigningKey(signinKey)
 				.build()
 				.parseClaimsJws(token)
 				.getBody();
 		
-		Map<String, String> claimMap = new HashMap<String, String>();
+		Map<String, Object> claimMap = new HashMap<String, Object>();
+		claimMap.put("id", claims.get("id"));
 		claimMap.put("name", claims.get("name").toString());
 		claimMap.put("surname", claims.get("surname").toString());
 		claimMap.put("email", claims.get("email").toString());
