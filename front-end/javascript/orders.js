@@ -20,9 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(userData => {
         const userId = userData.id;
-        return fetch(`http://localhost:8086/orders/${userId}`);
+        return fetch(`http://localhost:8086/orders/${userId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
     })
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Sifarişlər alınmadı");
+        }
+        return res.json();
+    })
     .then(orders => {
         const tbody = document.getElementById('orderItemsTableBody');
         tbody.innerHTML = '';
